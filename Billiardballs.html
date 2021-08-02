@@ -1,0 +1,98 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:300px;
+  top:300px;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:blue"></div>
+
+  <div id="ball2" style="
+  z-index:5;
+  position:absolute;
+  left:400px;
+  top:300px;
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:red"></div>
+
+<div id="ball3" style="
+z-index:5;
+position:absolute;
+left:365px;
+top:375px;
+width:90px;
+height:90px;
+border-radius:50%;
+background:yellow"></div>
+
+<script src="magic.js"></script>    
+<script src="ball.js"></script>    
+
+<script>
+
+var reverse = false;
+var velocity = 5;
+var positionX = 300;
+var positionY = 300;
+var shrinkX = 100;
+var shrinkY = 100;
+var ball = document.getElementById('ball');
+
+
+// YOUR CODE 
+// ----------------
+function moveBall(){
+
+
+  Xmax=300;
+  Xmin=0;
+  Ymax=300;
+  Ymin=0;
+
+  if(reverse == false){
+    
+    positionX = positionX - velocity;
+    positionY = positionY - velocity;
+    shrinkX = shrinkX - 1;
+    shrinkY = shrinkY - 1;
+    ball.style.left=positionX + 'px';
+    ball.style.top=positionY + 'px';
+    ball.style.height= shrinkY + 'px';
+    ball.style.width= shrinkX + 'px';
+    
+    if(positionX<Xmin && positionY<Ymin ){
+        reverse = !reverse;
+        //colorRandom(ball)
+        //colorRandom(ball2)
+        //colorRandom(ball3)
+    }
+    
+  }
+  
+  else {
+    
+    positionX = positionX + velocity;
+    positionY = positionY + velocity;
+    shrinkX = shrinkX + 1;
+    shrinkY = shrinkY + 1;
+    ball.style.left=positionX + 'px';
+    ball.style.top=positionY + 'px';
+  
+    ball.style.height= shrinkY + 'px';
+    ball.style.width= shrinkX + 'px';
+    
+    if(positionX == Xmax && positionY == Ymax){
+        reverse = !reverse;
+        colorRandom(ball)
+        colorRandom(ball2)
+        colorRandom(ball3)
+    }
+  }
+}
+
+setInterval(moveBall, 100)
+</script>
+
